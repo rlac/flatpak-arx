@@ -1,0 +1,26 @@
+diff --git a/src/input/SDLInputBackend.h b/src/input/SDLInputBackend.h
+index deaceb406..512a0102a 100644
+--- a/src/input/SDLInputBackend.h
++++ b/src/input/SDLInputBackend.h
+@@ -20,7 +20,7 @@
+ #ifndef ARX_INPUT_SDLINPUTBACKEND_H
+ #define ARX_INPUT_SDLINPUTBACKEND_H
+ 
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ 
+ #include "input/InputBackend.h"
+ #include "input/Keyboard.h"
+diff --git a/src/window/SDLWindow.h b/src/window/SDLWindow.h
+index a9dafb1b3..917fef1f7 100644
+--- a/src/window/SDLWindow.h
++++ b/src/window/SDLWindow.h
+@@ -20,7 +20,7 @@
+ #ifndef ARX_WINDOW_SDLWINDOW_H
+ #define ARX_WINDOW_SDLWINDOW_H
+ 
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ 
+ #include "window/RenderWindow.h"
+ 
