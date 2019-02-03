@@ -20,13 +20,13 @@ flatpak remove org.arx_libertatis.ArxLibertatis
 
 ## Playing
 
-Desktop launcher files aren't available yet. Run from the command line with:
+Either launch the game using the launcher icon, or run from the command line with:
 
 ```bash
 flatpak run org.arx_libertatis.ArxLibertatis
 ```
 
-## Setup
+### Setup
 
 Arx Libertatis requires the Arx Fatalis data files to play. You can [buy a DRM free copy from GOG](https://www.gog.com/game/arx_fatalis).
 

@@ -4,6 +4,8 @@
     "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "arx",
+    "rename-desktop-file": "arx-libertatis.desktop",
+    "rename-icon": "org.arx_libertatis.ArxLibertatis",
     "finish-args": [
         "--socket=x11",
         "--share=ipc",
@@ -14,8 +16,6 @@
         "cflags": "-O2 -g",
         "cxxflags": "-O2 -g"
     },
-    "cleanup": [
-    ],
     "modules": [
         {
             "name": "boost",
@@ -30,7 +30,8 @@
             "build-commands": [
                 "./bootstrap.sh --prefix=/app --exec-prefix=/app --with-libraries=system,filesystem,program_options,date_time,iostreams",
                 "./b2 install"
-            ]
+            ],
+            "cleanup": [ "/include", "/lib/*.a" ]
         },
         {
             "name": "glu",
@@ -41,12 +42,7 @@
                     "sha256": "4387476a1933f36fec1531178ea204057bbeb04cc2d8396c9ea32720a1f7e264"
                 }
             ],
-            "cleanup": [
-                "/include",
-                "/lib/*.a",
-                "/lib/*.la",
-                "/lib/pkgconfig"
-            ]
+            "cleanup": [ "/include", "/lib/*.a", "/lib/*.la","/lib/pkgconfig" ]
         },
         {
             "name": "glew",
@@ -68,11 +64,7 @@
                         "sha256": "04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95"
                     }
             ],
-            "cleanup": [
-                    "/include",
-                    "/lib/pkgconfig",
-                    "/lib/*.a"
-            ]
+            "cleanup": [ "/include", "/lib/pkgconfig", "/lib/*.a" ]
         },
         {
             "name": "sdl",
@@ -100,9 +92,7 @@
                     ]
                 }
             ],
-            "cleanup": [
-                "/bin", "/share/man", "/share/aclocal", "/include", "/lib/pkgconfig", "/lib/*.la", "/lib/*.a"
-            ]
+            "cleanup": [ "/bin", "/share/man", "/share/aclocal", "/include", "/lib/pkgconfig", "/lib/*.la", "/lib/*.a" ]
         },
         {
             "name": "innoextract",
@@ -136,6 +126,7 @@
             "build-commands": [
                 "mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/app -DOpenGL_GL_PREFERENCE=GLVND -DGLEW_INCLUDE_DIR=/include/GL -DSDL_LIBRARY=/lib/libSDL.so -DSDL_INCLUDE_DIR=/include/SDL .. && make && make install"
             ],
+            "cleanup": [ "/share/pixmaps" ],
             "sources": [
                 {
                     "type": "git",
@@ -146,6 +137,20 @@
                 {
                     "type": "patch",
                     "path": "arx-sdl_window.patch"
+                }
+            ]
+        },
+        {
+            "name": "high-res-icon",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/share/icons/hicolor/scalable/apps",
+                "cp org.arx_libertatis.ArxLibertatis.svg /app/share/icons/hicolor/scalable/apps/org.arx_libertatis.ArxLibertatis.svg"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "org.arx_libertatis.ArxLibertatis.svg"
                 }
             ]
         }
