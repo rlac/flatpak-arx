@@ -96,14 +96,14 @@
         },
         {
             "name": "innoextract",
-            "buildsystem": "simple",
+            "buildsystem": "cmake",
             "build-options": {
                 "env": {
                     "BOOST_ROOT": "/app"
                 }
             },
-            "build-commands": [
-                "mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/app .. && make && make install"
+            "config-opts": [
+                "-DCMAKE_INSTALL_PREFIX=/app"
             ],
             "sources": [
                 {
@@ -116,15 +116,19 @@
         },
         {
             "name": "arx",
-            "buildsystem": "simple",
+            "buildsystem": "cmake",
             "build-options": {
                 "cxxflags": "-O2 -g -pthread -lGL",
                 "env": {
                     "BOOST_ROOT": "/app"
                 }
             },
-            "build-commands": [
-                "mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/app -DOpenGL_GL_PREFERENCE=GLVND -DGLEW_INCLUDE_DIR=/include/GL -DSDL_LIBRARY=/lib/libSDL.so -DSDL_INCLUDE_DIR=/include/SDL .. && make && make install"
+            "config-opts": [
+                "-DCMAKE_INSTALL_PREFIX=/app",
+                "-DOpenGL_GL_PREFERENCE=GLVND",
+                "-DGLEW_INCLUDE_DIR=/include/GL",
+                "-DSDL_LIBRARY=/lib/libSDL.so",
+                "-DSDL_INCLUDE_DIR=/include/SDL"
             ],
             "cleanup": [ "/share/pixmaps" ],
             "sources": [
