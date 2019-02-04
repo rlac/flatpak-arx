@@ -10,7 +10,8 @@
         "--socket=x11",
         "--share=ipc",
         "--device=dri",
-        "--socket=pulseaudio"
+        "--socket=pulseaudio",
+        "--filesystem=host:ro"
     ],
     "build-options": {
         "cflags": "-O2 -g",
@@ -93,6 +94,16 @@
                 }
             ],
             "cleanup": [ "/bin", "/share/man", "/share/aclocal", "/include", "/lib/pkgconfig", "/lib/*.la", "/lib/*.a" ]
+        },
+        {
+            "name": "cabextract",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.cabextract.org.uk/cabextract-1.9.tar.gz",
+                    "sha256": "1bbc793d83c73288acd7e28ce33ec04955a76c73bf6471424ff835d725fcc4c1"
+                }
+            ]
         },
         {
             "name": "innoextract",
