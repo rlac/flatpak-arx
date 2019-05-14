@@ -4,7 +4,11 @@ A [Flatpak](https://flatpak.org) build of [Arx Libertatis](http://arx-libertatis
 
 ## Installation
 
-For now, you can build locally. Install flatpak-builder, then:
+For now, you can build locally.
+
+### Build
+
+Install flatpak-builder, then:
 
 ```bash
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -30,4 +34,6 @@ flatpak run org.arx_libertatis.ArxLibertatis
 
 ### Setup
 
-Arx Libertatis requires the Arx Fatalis data files to play. See the [Arx Libertatis wiki](http://wiki.arx-libertatis.org/Installing_the_game_data_under_Linux) for more information (note: this Flatpak includes cabextract and innoextract). When selecting the data directory to install to during initial setup, ensure you select 'user: /home/...' as other paths will not be writable from within the sandbox.
+Arx Libertatis requires the Arx Fatalis data files to play. See the [Arx Libertatis wiki](http://wiki.arx-libertatis.org/Installing_the_game_data_under_Linux) for more information (note: this Flatpak includes cabextract and innoextract). The game files will be installed under the Flatpak's private data directory (~/.var/app/org.arx_libertatis.ArxLibertatis).
+
+Currently the Flatpak has only been tested using the [GOG installer](https://www.gog.com/game/arx_fatalis).

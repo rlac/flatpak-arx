@@ -1,0 +1,22 @@
+diff --git a/src/core/ArxGame.cpp b/src/core/ArxGame.cpp
+index de7a5e460..752ea2298 100644
+--- a/src/core/ArxGame.cpp
++++ b/src/core/ArxGame.cpp
+@@ -456,7 +456,7 @@ bool ArxGame::AddPaks() {
+ 		
+ 		// Try to launch the data file installer on non-Windows systems
+ 		#if ARX_PLATFORM != ARX_PLATFORM_WIN32
+-		int ret = system("nohup arx-install-data --gui >/dev/null 2>&1 &");
++		int ret = system("arx-install-data --gui --data-dir $XDG_DATA_HOME/arx >/dev/null 2>&1 &");
+ 		(void)ret; // we really don't care!
+ 		#endif
+ 		
+@@ -495,7 +495,7 @@ bool ArxGame::AddPaks() {
+ 		}
+ 		oss << "\nSee  " << url::help_get_data;
+ 		oss << "  and  " << url::help_install_data << "\n";
+-		oss << "\nThe search path can be adjusted with command-line parameters.\n";
++		//oss << "\nThe search path can be adjusted with command-line parameters.\n";
+ 		#if ARX_PLATFORM != ARX_PLATFORM_WIN32
+ 		oss << "\nWe will now try to launch the data install script for you...\n";
+ 		#endif

@@ -11,6 +11,7 @@
         "--share=ipc",
         "--device=dri",
         "--socket=pulseaudio",
+        /* required for access to game data installer; xdg-desktop-portal does not allow sharing a directory */
         "--filesystem=host:ro"
     ],
     "build-options": {
@@ -139,7 +140,11 @@
                 "-DOpenGL_GL_PREFERENCE=GLVND",
                 "-DGLEW_INCLUDE_DIR=/include/GL",
                 "-DSDL_LIBRARY=/lib/libSDL.so",
-                "-DSDL_INCLUDE_DIR=/include/SDL"
+                "-DSDL_INCLUDE_DIR=/include/SDL",
+                "-DDATA_DIR_PREFIXES=${XDG_DATA_DIR}",
+                "-DCONFIG_DIR_PREFIXES=${XDG_CONFIG_HOME}",
+                "-DUSER_DIR_PREFIXES=${XDG_DATA_HOME}",
+                "-DIGNORE_EXE_DIR=/app/bin"
             ],
             "cleanup": [ "/share/pixmaps" ],
             "sources": [
@@ -152,6 +157,14 @@
                 {
                     "type": "patch",
                     "path": "arx-sdl_window.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "arx-core-arxgame-installdir.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "arx-scripts-install-noverify.patch"
                 }
             ]
         },

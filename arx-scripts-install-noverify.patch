@@ -1,0 +1,19 @@
+diff --git a/scripts/arx-install-data b/scripts/arx-install-data
+index 23797b804..742746576 100755
+--- a/scripts/arx-install-data
++++ b/scripts/arx-install-data
+@@ -2819,10 +2819,10 @@ optional_file() {
+ # Select source file / directory
+ if [ $install = 1 ] ; then
+ 	probe_source_files
+-	if [ $batch = 0 ] ; then
+-		list_append sourcefiles 'Patch existing install' ''
+-		list_append sourcefiles 'Verify existing install only' ''
+-	fi
++	# if [ $batch = 0 ] ; then
++	# 	list_append sourcefiles 'Patch existing install' ''
++	# 	list_append sourcefiles 'Verify existing install only' ''
++	# fi
+ 	user_select_entry --existing --any sourcefiles sourcefile \
+ 		"source file or directory to install from" "$green" "$dim_green" 'install from'
+ 	case "$sourcefile" in
